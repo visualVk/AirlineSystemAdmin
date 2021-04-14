@@ -30,3 +30,20 @@ export const logout = (token) => {
     method: 'post'
   })
 }
+
+export const findAllUser = () => {
+  const data = {}
+  return axios.request({
+    url: '/api/user/auth/findUserByQuerySet',
+    data,
+    method: 'post'
+  })
+}
+
+export const modifyFreeze = (data) => {
+  return axios.request({
+    url: '/api/user/auth/modifyFreeze',
+    data,
+    method: 'post'
+  })
+}
