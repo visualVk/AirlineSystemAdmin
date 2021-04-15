@@ -79,6 +79,7 @@ export default {
             commit('setUsername', data.username)
             commit('setUserId', data.uid)
             commit('setAccess', data.access)
+            commit('setCompanyId', data.companyId)
             commit('setHasGetInfo', true)
             console.log('[Store User Info]', state)
             resolve(data)

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-04-14 11:55:11
- * @LastEditTime: 2021-04-14 16:44:19
+ * @LastEditTime: 2021-04-14 22:31:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \iview-admin-template-real\src\view\user-manage\user-manage-table.vue
@@ -76,7 +76,7 @@
 
 <script>
 import Tables from "_c/tables";
-import { findAllUser, modifyFreeze } from "@/api/user";
+import { findAllUser, modifyFreeze, modifyUserInfo } from "@/api/user";
 export default {
   name: "tables_page",
   components: {
@@ -119,8 +119,8 @@ export default {
                         }
                         if (key == "gender") {
                           this.userInfoForm[key] = curUser[key]
-                            ? "male"
-                            : "female";
+                            ? "female"
+                            : "male";
                         } else {
                           this.userInfoForm[key] = curUser[key].toString();
                         }
@@ -167,8 +167,12 @@ export default {
       const freezeObj = {
         username: this.userInfoForm.username,
         isFreeze: Number.parseInt(this.userInfoForm.isFreeze),
+        userNickname: this.userInfoForm.userNickname,
+        gender: this.userInfoForm.gender === "male" ? false : true,
+        smartphone: this.userInfoForm.smartphone,
+        email: this.userInfoForm.email,
       };
-      let { data } = await modifyFreeze(freezeObj);
+      let { data } = await modifyUserInfo(freezeObj);
       console.log("[User manager table]", "{data}", data);
 
       if (data.code === 0) {

@@ -75,7 +75,7 @@ export default [
           title: '用户账号'
         },
         component: () => import('@/view/user-manage/user-manage-table.vue')
-      },
+      }
       // {
       //   path: 'level_2_2',
       //   name: 'level_2_2',
@@ -107,6 +107,93 @@ export default [
       //   },
       //   component: () => import('@/view/multilevel/level-2-3.vue')
       // }
+    ]
+  },
+  {
+    path: '/airline_manage',
+    name: 'airline_manage',
+    meta: {
+      icon: 'md-menu',
+      title: '飞机管理'
+    },
+    component: Main,
+    children: [
+      {
+        path: 'airline_info_manage',
+        name: 'airline_info_manage',
+        meta: {
+          icon: 'md-funnel',
+          title: '飞机信息管理'
+        },
+        component: () => import('@/view/airline-manage/airlineinfo-manage-table.vue')
+      },
+      {
+        path: 'airline_seat_manage',
+        name: 'airline_seat_manage',
+        meta: {
+          icon: 'md-funnel',
+          title: '航班信息管理'
+        },
+        component: () => import('@/view/user-manage/user-manage-table.vue')
+      },
+      {
+        path: 'airline_ticket_manage',
+        name: 'airline_ticket_manage',
+        meta: {
+          icon: 'md-funnel',
+          title: '机票管理'
+        },
+        component: () => import('@/view/user-manage/user-manage-table.vue')
+      },
+      {
+        path: 'ticket_type_manage',
+        name: 'ticket_type_manage',
+        meta: {
+          icon: 'md-funnel',
+          title: '机票类型管理'
+        },
+        component: () => import('@/view/user-manage/user-manage-table.vue')
+      },
+    ]
+  },
+  {
+    path: '/question_manage',
+    name: 'question_manage',
+    meta: {
+      icon: 'md-menu',
+      title: '问题管理'
+    },
+    component: Main,
+    children: [
+      {
+        path: 'question_info_manage',
+        name: 'question_info_manage',
+        meta: {
+          icon: 'md-funnel',
+          title: '问题信息管理'
+        },
+        component: () => import('@/view/user-manage/user-manage-table.vue')
+      },
+    ]
+  },
+  {
+    path: '/coupon_manage',
+    name: 'coupon_manage',
+    meta: {
+      icon: 'md-menu',
+      title: '优惠券管理'
+    },
+    component: Main,
+    children: [
+      {
+        path: 'coupon_info_manage',
+        name: 'coupon_info_manage',
+        meta: {
+          icon: 'md-funnel',
+          title: '优惠券信息管理'
+        },
+        component: () => import('@/view/user-manage/user-manage-table.vue')
+      },
     ]
   },
   {

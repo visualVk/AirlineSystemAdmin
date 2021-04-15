@@ -47,3 +47,11 @@ export const modifyFreeze = (data) => {
     method: 'post'
   })
 }
+
+export const modifyUserInfo = (data) => {
+  return axios.request({
+    url: '/api/user/auth/modifyUserInfo',
+    data,
+    method: 'post'
+  })
+}
