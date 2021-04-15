@@ -134,7 +134,7 @@ export default [
           icon: 'md-funnel',
           title: '航班信息管理'
         },
-        component: () => import('@/view/user-manage/user-manage-table.vue')
+        component: () => import('@/view/airline-manage/airlineseat-manage-table.vue')
       },
       {
         path: 'airline_ticket_manage',

@@ -6,7 +6,7 @@ import { forEach, hasOneOf, objEqual } from '@/libs/tools'
 export const TOKEN_KEY = 'token'
 
 export const setToken = (token) => {
-  Cookies.set(TOKEN_KEY, token, {expires: config.cookieExpires || 1})
+  Cookies.set(TOKEN_KEY, token, { expires: config.cookieExpires || 1 })
 }
 
 export const getToken = () => {
@@ -59,7 +59,7 @@ export const getBreadCrumbList = (route, homeRoute) => {
   let res = routeMetched.filter(item => {
     return item.meta === undefined || !item.meta.hide
   }).map(item => {
-    let meta = {...item.meta}
+    let meta = { ...item.meta }
     if (meta.title && typeof meta.title === 'function') meta.title = meta.title(route)
     let obj = {
       icon: (item.meta && item.meta.icon) || '',
@@ -71,12 +71,12 @@ export const getBreadCrumbList = (route, homeRoute) => {
   res = res.filter(item => {
     return !item.meta.hideInMenu
   })
-  return [{...homeItem, to: homeRoute.path}, ...res]
+  return [{ ...homeItem, to: homeRoute.path }, ...res]
 }
 
 export const getRouteTitleHandled = (route) => {
-  let router = {...route}
-  let meta = {...route.meta}
+  let router = { ...route }
+  let meta = { ...route.meta }
   let title = ''
   if (meta.title) {
     if (typeof meta.title === 'function') title = meta.title(router)
@@ -340,4 +340,28 @@ export const localSave = (key, value) => {
 
 export const localRead = (key) => {
   return localStorage.getItem(key) || ''
+}
+
+export function formatDate(date, fmt) {
+  if (/(y+)/.test(fmt)) {
+    fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+  }
+  let o = {
+    'M+': date.getMonth() + 1,
+    'd+': date.getDate(),
+    'h+': date.getHours(),
+    'm+': date.getMinutes(),
+    's+': date.getSeconds()
+  };
+  for (let k in o) {
+    if (new RegExp(`(${k})`).test(fmt)) {
+      let str = o[k] + '';
+      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : padLeftZero(str));
+    }
+  }
+  return fmt;
+};
+
+function padLeftZero(str) {
+  return ('00' + str).substr(str.length);
 }
