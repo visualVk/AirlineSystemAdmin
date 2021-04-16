@@ -22,3 +22,11 @@ export const cancelOrder = (data) => {
     method: 'post'
   })
 }
+
+export const modifyTicketType = (data) => {
+  return axios.request({
+    url: '/api/ticket/updateTicketType',
+    data,
+    method: 'post'
+  })
+}
