@@ -9,10 +9,13 @@
         v-model="tableData"
         :columns="columns"
         @on-delete="handleDelete"
+        @on-selection-change="selectChange"
       />
       <Button style="margin: 10px 0" type="primary" @click="showAddModal"
         >新增静态问题</Button
       >
+      &nbsp;&nbsp;
+      <Button type="error" @click="deleteQuestionByIds"> 批量删除 </Button>
     </Card>
 
     <Modal
@@ -74,6 +77,7 @@ export default {
   data() {
     return {
       columns: [
+        { key: "qid", type: "selection", width: 60, align: "center" },
         { title: "标题", key: "qtitle", sortable: true },
         { title: "内容", key: "qcontent" },
         { title: "时间", key: "date", sortable: true },
@@ -91,12 +95,6 @@ export default {
                 on: {
                   "on-ok": () => {
                     vm.$emit("on-delete", params);
-                    vm.$emit(
-                      "input",
-                      params.tableData.filter(
-                        (item, index) => index !== params.row.initRowIndex
-                      )
-                    );
                   },
                 },
               });
@@ -124,6 +122,7 @@ export default {
         },
       ],
       tableData: [],
+      selectQIdList: [],
       isAdd: false,
       questionModal: false,
       questionForm: {
@@ -155,6 +154,12 @@ export default {
   methods: {
     handleDelete(params) {
       console.log(params);
+      this.selectQIdList = [this.tableData[params.index].qid];
+      this.deleteQuestionByIds();
+    },
+    selectChange(selection) {
+      this.selectQIdList = selection.map((question) => question.qid);
+      console.log("select q id list", this.selectQIdList);
     },
     showAddModal() {
       this.isAdd = true;
@@ -224,6 +229,22 @@ export default {
           this.$Message.error({
             content: data.message,
           });
+        }
+      });
+    },
+    deleteQuestionByIds() {
+      if (this.selectQIdList.length == 0) {
+        this.$Message.error("未选中任何问题");
+        return;
+      }
+      console.log("delete id list", this.selectQIdList);
+      deleteQuestion({ qidList: this.selectQIdList }).then((res) => {
+        const { data } = res;
+        if (data.code === 0) {
+          this.$Message.success(data.message);
+          this.findAllQuestion();
+        } else {
+          this.$Message.error(data.message);
         }
       });
     },
