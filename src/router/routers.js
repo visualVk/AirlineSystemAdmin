@@ -192,7 +192,16 @@ export default [
           icon: 'md-funnel',
           title: '优惠券信息管理'
         },
-        component: () => import('@/view/user-manage/user-manage-table.vue')
+        component: () => import('@/view/coupon-manage/couponinfo-manage-table.vue')
+      },
+      {
+        path: 'coupon_user_manage',
+        name: 'coupon_user_manage',
+        meta: {
+          icon: 'md-funnel',
+          title: '优惠券用户关联管理'
+        },
+        component: () => import('@/view/coupon-manage/couponuser-manage-table.vue')
       },
     ]
   },
