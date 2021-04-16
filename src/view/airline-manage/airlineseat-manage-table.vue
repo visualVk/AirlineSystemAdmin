@@ -74,6 +74,7 @@
             :max="2000"
             :min="1"
             :step="0.1"
+            :disabled="!isAdd"
             v-model="airlineSeatForm.seatBOList[index].tot"
           ></InputNumber>
         </FormItem>

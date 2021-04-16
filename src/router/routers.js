@@ -143,7 +143,7 @@ export default [
           icon: 'md-funnel',
           title: '机票管理'
         },
-        component: () => import('@/view/user-manage/user-manage-table.vue')
+        component: () => import('@/view/airline-manage/airlineticket-manage-table.vue')
       },
       {
         path: 'ticket_type_manage',
