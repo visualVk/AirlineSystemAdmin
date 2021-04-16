@@ -172,7 +172,7 @@ export default [
           icon: 'md-funnel',
           title: '问题信息管理'
         },
-        component: () => import('@/view/user-manage/user-manage-table.vue')
+        component: () => import('@/view/question-manage/question-manage-table.vue')
       },
     ]
   },
