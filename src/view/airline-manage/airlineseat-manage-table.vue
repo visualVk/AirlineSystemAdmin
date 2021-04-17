@@ -12,7 +12,10 @@
       />
       <Button style="margin: 10px 0" type="primary" @click="showAddModal"
         >新增航班</Button
-      >
+      >&nbsp;&nbsp;
+      <Button style="margin: 10px 0" type="primary" @click="exportExcel">
+        导出Excel
+      </Button>
     </Card>
 
     <Modal
@@ -225,6 +228,11 @@ export default {
             content: data.message,
           });
         }
+      });
+    },
+    exportExcel() {
+      this.$refs.tables.exportCsv({
+        filename: `航班信息-${new Date().valueOf()}.csv`,
       });
     },
     showAddModal() {

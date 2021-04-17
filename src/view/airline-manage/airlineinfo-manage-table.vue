@@ -11,7 +11,10 @@
         @on-delete="deleteAirlineInfo"
       />
       <Button style="margin: 10px 0" type="primary" @click="showAddModal">
-        新增飞机
+        新增飞机 </Button
+      >&nbsp;&nbsp;
+      <Button style="margin: 10px 0" type="primary" @click="exportExcel">
+        导出Excel
       </Button>
     </Card>
 
@@ -214,6 +217,11 @@ export default {
   methods: {
     resetForm(name) {
       this.$refs[name].resetFields();
+    },
+    exportExcel() {
+      this.$refs.tables.exportCsv({
+        filename: `飞机信息-${new Date().valueOf()}.csv`,
+      });
     },
     showAddModal() {
       this.isAdd = true;
