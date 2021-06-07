@@ -8,7 +8,7 @@ export const login = ({ username, password }) => {
     rememberMe: true
   }
   return axios.request({
-    url: '/api/user/auth/login',
+    url: '/user/auth/login',
     data,
     method: 'post'
   })
@@ -16,7 +16,7 @@ export const login = ({ username, password }) => {
 //deprecated
 export const getUserInfo = (token) => {
   return axios.request({
-    url: '/api/user/auth/getUserInfo',
+    url: '/user/auth/getUserInfo',
     // params: {
     //   token
     // },
@@ -26,7 +26,7 @@ export const getUserInfo = (token) => {
 
 export const logout = (token) => {
   return axios.request({
-    url: '/api/user/auth/logout',
+    url: '/user/auth/logout',
     method: 'post'
   })
 }
@@ -34,7 +34,7 @@ export const logout = (token) => {
 export const findAllUser = () => {
   const data = {}
   return axios.request({
-    url: '/api/user/auth/findUserByQuerySet',
+    url: '/user/auth/findUserByQuerySet',
     data,
     method: 'post'
   })
@@ -42,7 +42,7 @@ export const findAllUser = () => {
 
 export const modifyFreeze = (data) => {
   return axios.request({
-    url: '/api/user/auth/modifyFreeze',
+    url: '/user/auth/modifyFreeze',
     data,
     method: 'post'
   })
@@ -50,7 +50,7 @@ export const modifyFreeze = (data) => {
 
 export const modifyUserInfo = (data) => {
   return axios.request({
-    url: '/api/user/auth/modifyUserInfo',
+    url: '/user/auth/modifyUserInfo',
     data,
     method: 'post'
   })

@@ -37,10 +37,15 @@
           ></Input>
         </FormItem>
         <FormItem label="内容" prop="qcontent">
-          <Input
+          <!-- <Input
             v-model="questionForm.qcontent"
             placeholder="Enter something..."
-          ></Input>
+          ></Input> -->
+          <Input
+            v-model="questionForm.qcontent"
+            type="textarea"
+            placeholder="Enter something..."
+          />
         </FormItem>
         <FormItem label="时间" prop="date">
           <DatePicker
@@ -125,6 +130,7 @@ export default {
       selectQIdList: [],
       isAdd: false,
       questionModal: false,
+      inputMaxLenght: 200,
       questionForm: {
         qid: "",
         qcontent: "",
@@ -221,14 +227,14 @@ export default {
       findAllQuestion({}).then((res) => {
         const { data } = res;
         if (data.code === 0) {
-          this.$Message.success({
-            content: data.message,
-          });
+          // this.$Message.success({
+          //   content: data.message,
+          // });
           this.tableData = data.data;
         } else {
-          this.$Message.error({
-            content: data.message,
-          });
+          // this.$Message.error({
+          //   content: data.message,
+          // });
         }
       });
     },
