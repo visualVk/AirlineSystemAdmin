@@ -2,7 +2,7 @@ import axios from '@/libs/api.request'
 
 export const findAllQuestion = (data) => {
   return axios.request({
-    url: '/api/question/findQuestionByQuerySet',
+    url: '/question/findQuestionByQuerySet',
     data,
     method: 'post'
   })
@@ -10,7 +10,7 @@ export const findAllQuestion = (data) => {
 
 export const addQuestion = (data) => {
   return axios.request({
-    url: '/api/question/insertQuestion',
+    url: '/question/insertQuestion',
     data,
     method: 'post'
   })
@@ -18,7 +18,7 @@ export const addQuestion = (data) => {
 
 export const deleteQuestion = (data) => {
   return axios.request({
-    url: '/api/question/deleteQuestionByIds',
+    url: '/question/deleteQuestionByIds',
     data,
     method: 'post'
   })
@@ -26,7 +26,7 @@ export const deleteQuestion = (data) => {
 
 export const modifyQuestion = (data) => {
   return axios.request({
-    url: '/api/question/updateQuestion',
+    url: '/question/updateQuestion',
     data,
     method: 'post'
   })

@@ -241,6 +241,7 @@ export default {
       //制空
       this.airlineSeatForm = {
         airlineId: "",
+        airlineSeatId: "",
         airlineDate: new Date().toString(),
         hours: 0,
         seatBOList: [
@@ -284,6 +285,8 @@ export default {
           this.$Message.success({
             content: data.message,
           });
+        } else {
+          this.$Message.error(data.message);
         }
       });
     },
@@ -296,11 +299,13 @@ export default {
           this.$Message.success({
             content: data.message,
           });
+        } else {
+          this.$Message.error(data.message);
         }
       });
     },
     findAirlineSeatByCompanyId() {
-      findAirlineSeat({ companydId: this.$store.state.user.companyId }).then(
+      findAirlineSeat({ companyId: this.$store.state.user.companyId }).then(
         (res) => {
           const { data } = res;
           this.originTableData = data.data;

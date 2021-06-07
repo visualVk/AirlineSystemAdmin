@@ -185,7 +185,7 @@ export default {
       ticketTypeList: [],
       isAdd: false,
       ruleValidate: {
-        city: [
+        cityId: [
           {
             validator: (rule, value, callback) => {
               // console.log(
@@ -209,7 +209,12 @@ export default {
           { required: true, message: "必须输入飞机名", trigger: "blur" },
         ],
         supEntityBOList: [
-          { required: true, message: "必须选择", trigger: "blur" },
+          {
+            required: true,
+            type: "array",
+            message: "必须选择",
+            trigger: "blur",
+          },
         ],
       },
     };
@@ -300,9 +305,11 @@ export default {
     },
     modifyAirlineInfo(subForm) {
       modifyAirlineInfo(subForm).then((res) => {
-        this.$Message.error({ content: "Fail!" });
         if (res.data.code === 0) {
+          this.$Message.success({ content: res.data.message });
           this.findAirlineInfo();
+        } else {
+          this.$Message.error({ content: res.data.message });
         }
       });
     },
